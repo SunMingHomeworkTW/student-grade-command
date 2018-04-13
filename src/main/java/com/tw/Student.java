@@ -57,7 +57,7 @@ public class Student {
     this.averageScore = averageScore;
   }
 
-  public double getTotalScore() {
+  public int getTotalScore() {
     return totalScore;
   }
 
@@ -78,6 +78,6 @@ public class Student {
   }
 
   public String getDetailedInfo(){
-    return name+"|"+scores.get("数学")+"|"+scores.get("语文")+"|"+scores.get("英语")+"|"+scores.get("编程")+"|"+averageScore+"|"+totalScore;
+    return name+"|"+scores.get("数学")+"|"+scores.get("语文")+"|"+scores.get("英语")+"|"+scores.get("编程")+"|"+averageScore+"|"+totalScore+"\n";
   }
 }

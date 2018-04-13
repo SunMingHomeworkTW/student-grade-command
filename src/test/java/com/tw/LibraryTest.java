@@ -3,6 +3,7 @@ package com.tw;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -73,62 +74,68 @@ public class LibraryTest {
         assertThat(systemOut()).isEqualTo("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
     }
 
-//    @Test
-//    public void testGetAverageTotalScore() {
-//        Student student1=mock(Student.class);
-//        Student student2=mock(Student.class);
-//
-//        when(student1.getTotalScore()).thenReturn(330);
-//        when(student2.getTotalScore()).thenReturn(325);
-//
-//        List<Student> studentList=new ArrayList<>();
-//        library.studentList=studentList;
-//
-//        assertThat(library.getAverageScore()).isEqualTo(327.5);
-//    }
-//
-//    @Test
-//    public void testGetMedianTotalScore() {
-//        Student student1=mock(Student.class);
-//        Student student2=mock(Student.class);
-//
-//        when(student1.getTotalScore()).thenReturn(330);
-//        when(student2.getTotalScore()).thenReturn(325);
-//
-//        List<Student> studentList=new ArrayList<>();
-//        library.studentList=studentList;
-//
-//        assertThat(library.getMedianScore()).isEqualTo(327.5);
-//    }
-//
-//    @Test
-//    public void should_print_report_successful()() {
-//        String studentInfo1="张三，0001，数学：75，语文：95，英语：80，编程：80";
-//        String studentInfo2="李四，0002，数学：85，语文：80，英语：70，编程：90";
-//        library.addStudentAchievement(studentInfo1);
-//        library.addStudentAchievement(studentInfo2);
-//
-//        String infos="0001,0002,003";
-//
-//        library.printReport(infos);
-//        assertThat(systemOut()).equals("成绩单\n姓名|数学|语文|英语|编程|平均分|总分\n========================\n张三|75|95|80|80|82.5|330\n李四|85|80|70|90|81.25|325\n========================\n全班总分平均数：327.5\n全班总分中位数：327.5\n");
-//    }
-//
-//    @Test
-//    public void should_print_report_successful()() {
-//        String studentInfo1="张三，0001，数学：75，语文：95，英语：80，编程：80";
-//        String studentInfo2="李四，0002，数学：85，语文：80，英语：70，编程：90";
-//        library.addStudentAchievement(studentInfo1);
-//        library.addStudentAchievement(studentInfo2);
-//
-//        String infos="0001,0002";
-//
-//        library.printReport(infos);
-//        assertThat(systemOut()).equals("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
-//    }
-//
-//    @Test
-//    public void testExit() {
-//        library.exit();
-//    }
+    @Test
+    public void testGetAverageTotalScore() {
+        List<Integer> totalScoreList=new ArrayList<>();
+        totalScoreList.add(330);
+        totalScoreList.add(325);
+        library.setTotalScoreList(totalScoreList);
+
+        assertThat(library.getAverageScore()).isEqualTo(327.5);
+    }
+
+    @Test
+    public void testGetMedianTotalScore() {
+        List<Integer> totalScoreList=new ArrayList<>();
+        totalScoreList.add(330);
+        totalScoreList.add(325);
+        library.setTotalScoreList(totalScoreList);
+
+        assertThat(library.getMedianScore()).isEqualTo(327.5);
+    }
+
+    @Test
+    public void should_print_report_successful() {
+        String studentInfo1="张三，0001，数学：75，语文：95，英语：80，编程：80";
+        String studentInfo2="李四，0002，数学：85，语文：80，英语：70，编程：90";
+        List<Student> studentList=new ArrayList<>();
+        studentList.add(new Student(studentInfo1));
+        studentList.add(new Student(studentInfo2));
+        library.setStudentList(studentList);
+
+        List<Integer> totalScoreList=new ArrayList<>();
+        totalScoreList.add(330);
+        totalScoreList.add(325);
+        library.setTotalScoreList(totalScoreList);
+
+        String infos="0001,0002,003";
+
+        library.printReport(infos);
+        assertThat(systemOut()).isEqualTo("成绩单\n姓名|数学|语文|英语|编程|平均分|总分\n========================\n张三|75|95|80|80|82.5|330\n李四|85|80|70|90|81.25|325\n========================\n全班总分平均数：327.5\n全班总分中位数：327.5\n1.添加学生\n2.生成成绩单\n3.退出\n请输入你的选择（1~3）：\n");
+    }
+
+    @Test
+    public void should_print_report_failed() {
+        String studentInfo1="张三，0001，数学：75，语文：95，英语：80，编程：80";
+        String studentInfo2="李四，0002，数学：85，语文：80，英语：70，编程：90";
+        List<Student> studentList=new ArrayList<>();
+        studentList.add(new Student(studentInfo1));
+        studentList.add(new Student(studentInfo2));
+        library.setStudentList(studentList);
+
+        List<Integer> totalScoreList=new ArrayList<>();
+        totalScoreList.add(330);
+        totalScoreList.add(325);
+        library.setTotalScoreList(totalScoreList);
+
+        String infos="0001 0002";
+
+        library.printReport(infos);
+        assertThat(systemOut()).isEqualTo("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
+    }
+
+    @Test
+    public void testExit() {
+        library.exit();
+    }
 }
