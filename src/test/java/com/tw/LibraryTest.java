@@ -1,57 +1,57 @@
-//package com.tw;
-//
-//import java.io.ByteArrayOutputStream;
-//import java.io.PrintStream;
-//import java.util.ArrayList;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import java.util.LinkedList;
-//
-//import static org.junit.Assert.*;
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.when;
-//import static org.fest.assertions.api.Assertions.assertThat;
-//
-//public class LibraryTest {
-//    private Library library;
-//    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-//
-//    @Before
-//    public void setup() {
-//        library=new Library();
-//        System.setOut(new PrintStream(outContent));
-//    }
-//
-//    @Test
-//    public void testSomeLibraryMethod() {
-//        Library classUnderTest = new Library();
-//        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-//    }
-//
-//    @Test
-//    public void testMockClass() throws Exception {
-//        // you can mock concrete classes, not only interfaces
-//        LinkedList mockedList = mock(LinkedList.class);
-//
-//        // stubbing appears before the actual execution
-//        String value = "first";
-//        when(mockedList.get(0)).thenReturn(value);
-//
-//        assertEquals(mockedList.get(0), value);
-//
-//    }
-//
-//    private String systemOut() {
-//        return outContent.toString();
-//    }
-//
-//    @Test
-//    public void testPrintMainMenu(){
-//        library.printMainMenu();
-//        assertThat(systemOut()).equals("1.添加学生\n2.生成成绩单\n3.退出\n请输入你的选择（1~3）：\n");
-//    }
-//
+package com.tw;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.LinkedList;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.fest.assertions.api.Assertions.assertThat;
+
+public class LibraryTest {
+    private Library library;
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setup() {
+        library=new Library();
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @Test
+    public void testSomeLibraryMethod() {
+        Library classUnderTest = new Library();
+        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    }
+
+    @Test
+    public void testMockClass() throws Exception {
+        // you can mock concrete classes, not only interfaces
+        LinkedList mockedList = mock(LinkedList.class);
+
+        // stubbing appears before the actual execution
+        String value = "first";
+        when(mockedList.get(0)).thenReturn(value);
+
+        assertEquals(mockedList.get(0), value);
+
+    }
+
+    private String systemOut() {
+        return outContent.toString();
+    }
+
+    @Test
+    public void testPrintMainMenu(){
+        library.printMainMenu();
+        assertThat(systemOut()).isEqualTo("1.添加学生\n2.生成成绩单\n3.退出\n请输入你的选择（1~3）：\n");
+    }
+
 //    @Test
 //    public void testAddStudentInfo() {
 //        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
@@ -131,4 +131,4 @@
 //    public void testExit() {
 //        library.exit();
 //    }
-//}
+}
