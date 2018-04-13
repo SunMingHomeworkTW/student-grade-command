@@ -3,6 +3,7 @@ package com.tw;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Library {
     private List<Student> studentList;
@@ -70,7 +71,7 @@ public class Library {
         }
     }
 
-    public void printReport(String infos) {
+    public void buildReport(String infos) {
         if(infos.matches("[，,0-9]*")){
             System.out.print("成绩单\n姓名|数学|语文|英语|编程|平均分|总分\n========================\n");
             String[] strs=infos.split(",");
@@ -91,5 +92,30 @@ public class Library {
 
     public void exit() {
         System.exit(0);
+    }
+
+    public static void main(String[] args){
+        Library library=new Library();
+        library.printMainMenu();
+        Scanner scanner=new Scanner(System.in);
+
+        while(scanner.hasNext()){
+            switch (scanner.nextLine()) {
+                case "1":
+                    System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：\n");
+                    library.addStudentAchievement(scanner.nextLine());
+                    break;
+                case "2":
+                    System.out.print("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
+                    library.buildReport(scanner.nextLine());
+                    break;
+                case "3":
+                    library.exit();
+                    default:
+                        library.printMainMenu();
+                        break;
+
+            }
+        }
     }
 }
