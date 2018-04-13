@@ -1,32 +1,134 @@
-package com.tw;
-
-import org.junit.Test;
-
-import java.util.LinkedList;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-public class LibraryTest {
-    @Test
-    public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-    }
-
-    @Test
-    public void testMockClass() throws Exception {
-        // you can mock concrete classes, not only interfaces
-        LinkedList mockedList = mock(LinkedList.class);
-
-        // stubbing appears before the actual execution
-        String value = "first";
-        when(mockedList.get(0)).thenReturn(value);
-
-        assertEquals(mockedList.get(0), value);
-
-    }
-
-}
+//package com.tw;
+//
+//import java.io.ByteArrayOutputStream;
+//import java.io.PrintStream;
+//import java.util.ArrayList;
+//import org.junit.Before;
+//import org.junit.Test;
+//
+//import java.util.LinkedList;
+//
+//import static org.junit.Assert.*;
+//import static org.mockito.Mockito.mock;
+//import static org.mockito.Mockito.when;
+//import static org.fest.assertions.api.Assertions.assertThat;
+//
+//public class LibraryTest {
+//    private Library library;
+//    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+//
+//    @Before
+//    public void setup() {
+//        library=new Library();
+//        System.setOut(new PrintStream(outContent));
+//    }
+//
+//    @Test
+//    public void testSomeLibraryMethod() {
+//        Library classUnderTest = new Library();
+//        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+//    }
+//
+//    @Test
+//    public void testMockClass() throws Exception {
+//        // you can mock concrete classes, not only interfaces
+//        LinkedList mockedList = mock(LinkedList.class);
+//
+//        // stubbing appears before the actual execution
+//        String value = "first";
+//        when(mockedList.get(0)).thenReturn(value);
+//
+//        assertEquals(mockedList.get(0), value);
+//
+//    }
+//
+//    private String systemOut() {
+//        return outContent.toString();
+//    }
+//
+//    @Test
+//    public void testPrintMainMenu(){
+//        library.printMainMenu();
+//        assertThat(systemOut()).equals("1.添加学生\n2.生成成绩单\n3.退出\n请输入你的选择（1~3）：\n");
+//    }
+//
+//    @Test
+//    public void testAddStudentInfo() {
+//        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
+//        library.addStudentInfo(studentInfo);
+//        assertThat(library.getStudentInfoList.size()).isEqualTo(1);
+//    }
+//
+//    @Test
+//    public void should_studentInfo_added_successful() {
+//        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
+//        library.addStudentAchievement(studentInfo);
+//        assertThat(systemOut()).isEqualTo("学生张三的成绩被添加\n");
+//    }
+//
+//    @Test
+//    public void should_studentInfo_added_failed() {
+//        String studentInfo="李四，0002，数学,85，语文,80，英语,70，编程,90";
+//        library.addStudentAchievement(studentInfo);
+//        assertThat(systemOut()).isEqualTo("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+//    }
+//
+//    @Test
+//    public void testGetAverageTotalScore() {
+//        Student student1=mock(Student.class);
+//        Student student2=mock(Student.class);
+//
+//        when(student1.getTotalScore()).thenReturn(330);
+//        when(student2.getTotalScore()).thenReturn(325);
+//
+//        List<Student> studentList=new ArrayList<>();
+//        library.studentList=studentList;
+//
+//        assertThat(library.getAverageScore()).isEqualTo(327.5);
+//    }
+//
+//    @Test
+//    public void testGetMedianTotalScore() {
+//        Student student1=mock(Student.class);
+//        Student student2=mock(Student.class);
+//
+//        when(student1.getTotalScore()).thenReturn(330);
+//        when(student2.getTotalScore()).thenReturn(325);
+//
+//        List<Student> studentList=new ArrayList<>();
+//        library.studentList=studentList;
+//
+//        assertThat(library.getMedianScore()).isEqualTo(327.5);
+//    }
+//
+//    @Test
+//    public void should_print_report_successful()() {
+//        String studentInfo1="张三，0001，数学：75，语文：95，英语：80，编程：80";
+//        String studentInfo2="李四，0002，数学：85，语文：80，英语：70，编程：90";
+//        library.addStudentAchievement(studentInfo1);
+//        library.addStudentAchievement(studentInfo2);
+//
+//        String infos="0001,0002,003";
+//
+//        library.printReport(infos);
+//        assertThat(systemOut()).equals("成绩单\n姓名|数学|语文|英语|编程|平均分|总分\n========================\n张三|75|95|80|80|82.5|330\n李四|85|80|70|90|81.25|325\n========================\n全班总分平均数：327.5\n全班总分中位数：327.5\n");
+//    }
+//
+//    @Test
+//    public void should_print_report_successful()() {
+//        String studentInfo1="张三，0001，数学：75，语文：95，英语：80，编程：80";
+//        String studentInfo2="李四，0002，数学：85，语文：80，英语：70，编程：90";
+//        library.addStudentAchievement(studentInfo1);
+//        library.addStudentAchievement(studentInfo2);
+//
+//        String infos="0001,0002";
+//
+//        library.printReport(infos);
+//        assertThat(systemOut()).equals("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
+//    }
+//
+//    @Test
+//    public void testExit() {
+//        library.exit();
+//    }
+//}
