@@ -29,4 +29,14 @@ public class Library {
     public void addStudentInfo(String studentInfo) {
         studentList.add(new Student(studentInfo));
     }
+
+    public void addStudentAchievement(String studentInfo) {
+        try {
+            addStudentInfo(studentInfo);
+            System.out.print("学生"+studentList.get(studentList.size()-1).getName()+"的成绩被添加\n");
+            printMainMenu();
+        }catch (Exception e){
+            System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+        }
+    }
 }

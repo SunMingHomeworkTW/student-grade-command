@@ -59,20 +59,20 @@ public class LibraryTest {
         assertThat(library.getStudentList().size()).isEqualTo(1);
     }
 
-//    @Test
-//    public void should_studentInfo_added_successful() {
-//        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
-//        library.addStudentAchievement(studentInfo);
-//        assertThat(systemOut()).isEqualTo("学生张三的成绩被添加\n");
-//    }
-//
-//    @Test
-//    public void should_studentInfo_added_failed() {
-//        String studentInfo="李四，0002，数学,85，语文,80，英语,70，编程,90";
-//        library.addStudentAchievement(studentInfo);
-//        assertThat(systemOut()).isEqualTo("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
-//    }
-//
+    @Test
+    public void should_studentInfo_added_successful() {
+        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
+        library.addStudentAchievement(studentInfo);
+        assertThat(systemOut()).isEqualTo("学生张三的成绩被添加\n1.添加学生\n2.生成成绩单\n3.退出\n请输入你的选择（1~3）：\n");
+    }
+
+    @Test
+    public void should_studentInfo_added_failed() {
+        String studentInfo="李四，0002，数学,85，语文,80，英语,70，编程,90";
+        library.addStudentAchievement(studentInfo);
+        assertThat(systemOut()).isEqualTo("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+    }
+
 //    @Test
 //    public void testGetAverageTotalScore() {
 //        Student student1=mock(Student.class);
