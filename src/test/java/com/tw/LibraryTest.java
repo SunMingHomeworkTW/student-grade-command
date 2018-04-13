@@ -52,13 +52,13 @@ public class LibraryTest {
         assertThat(systemOut()).isEqualTo("1.添加学生\n2.生成成绩单\n3.退出\n请输入你的选择（1~3）：\n");
     }
 
-//    @Test
-//    public void testAddStudentInfo() {
-//        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
-//        library.addStudentInfo(studentInfo);
-//        assertThat(library.getStudentInfoList.size()).isEqualTo(1);
-//    }
-//
+    @Test
+    public void testAddStudentInfo() {
+        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
+        library.addStudentInfo(studentInfo);
+        assertThat(library.getStudentList().size()).isEqualTo(1);
+    }
+
 //    @Test
 //    public void should_studentInfo_added_successful() {
 //        String studentInfo="张三，0001，数学：75，语文：95，英语：80，编程：80";
